@@ -1,0 +1,8 @@
+services:
+  delivery-svc:
+    build: .
+    image: duoc/jv0101-caso05-delivery:1.0.0
+    container_name: caso05-delivery-svc
+    ports:
+      - "${PORT:-8080}:8080"
+    restart: unless-stopped
