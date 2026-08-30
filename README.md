@@ -63,3 +63,34 @@ docker compose up --build
 mvn test      # unit tests + Cucumber
 mvn verify    # + verificación de cobertura JaCoCo (100% LINE, falla si baja)
 ```
+
+## Modelo de ramificación
+Modelo elegido: GitFlow.
+Elegimos GitFlow porque el curso se desarrolla durante todo el semestre y cada entrega (EP01, EP02, EP03) es un hito estable. La rama develop nos permite integrar features de ambos integrantes sin ensuciar main, y la rama hotfix/ nos deja corregir un bug en producción sin interrumpir el trabajo en desarrollo. Además, GitFlow separa explícitamente el código estable (main) del código en integración (develop), lo que da trazabilidad clara del código frente a lo que se pide en las rúbricas del curso.
+
+
+## Guía de Buenas Prácticas
+
+### Convención de Commits
+Formato: `tipo(alcance): descripcion-corta` (en minúsculas y sin tildes).
+- **feat**: Nueva funcionalidad (ej. `feat(ui): agregar pie de pagina`)
+- **fix**: Corrección de bug (ej. `fix(home): corregir titulo`)
+- **docs**: Documentación (ej. `docs: agregar changelog`)
+- **chore**: Tareas / CI (ej. `chore(ci): agregar workflow hola mundo`)
+
+### Naming de Ramas
+- `feature/<nombre>`: Para nuevas funcionalidades (en minúsculas y con guiones).
+- `hotfix/<nombre>`: Para correcciones urgentes en producción.
+
+### Flujo de Merge y Revisión
+- Las features y hotfixes siempre entran por Pull Request (PR). Nunca push directo a main o develop.
+- Se necesita al menos 1 aprobación del compañero antes de fusionar.
+- El revisor debe confirmar los cambios; nunca se fusiona sin revisión. Al finalizar, se borra la rama.
+
+## Conclusiones y Reflexiones
+
+**Reflexión Cristopher Candia:** 
+En este trabajo logré entender cómo armar un repositorio desde cero usando comandos en la terminal, lo que hizo el proceso mucho más rápido y directo. Aplicar GitFlow y Docker me dejó claro por qué nunca se debe programar directo en la rama main y la importancia de levantar el microservicio en local antes de subir cambios. Trabajar con Pull Requests y ramas aisladas (features) al principio parece tener muchos pasos, pero asegura que no rompamos el código del equipo. Me quedo con la buena práctica de entender qué hace exactamente cada comando en vez de solo copiarlos, lo que me da mucha más seguridad para las próximas entregas.
+
+**Declaración de IA:** 
+Para este encargo utilicé IA (Gemini) asumiendo un rol de tutor técnico. Se utilizó para guiar la ejecución de comandos en PowerShell, explicar la lógica detrás de cada paso de GitFlow y estructurar las convenciones de este documento de forma ordenada.
