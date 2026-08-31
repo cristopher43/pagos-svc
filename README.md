@@ -1,4 +1,4 @@
-# Delivery — Microservicio de riesgo delivery
+g# Delivery — Microservicio de riesgo delivery
 
 Microservicio correspondiente al **caso caso05 — FoodGo** (Delivery de comida) de la Evaluación Parcial N°1.
 
@@ -92,5 +92,11 @@ Formato: `tipo(alcance): descripcion-corta` (en minúsculas y sin tildes).
 **Reflexión Cristopher Candia:** 
 En este trabajo logré entender cómo armar un repositorio desde cero usando comandos en la terminal, lo que hizo el proceso mucho más rápido y directo. Aplicar GitFlow y Docker me dejó claro por qué nunca se debe programar directo en la rama main y la importancia de levantar el microservicio en local antes de subir cambios. Trabajar con Pull Requests y ramas aisladas (features) al principio parece tener muchos pasos, pero asegura que no rompamos el código del equipo. Me quedo con la buena práctica de entender qué hace exactamente cada comando en vez de solo copiarlos, lo que me da mucha más seguridad para las próximas entregas.
 
+**Reflexion Matias Reyes**
+Durante este encargo, mi principal contribución fue revisar, aprobar y fusionar los Pull Requests de mi compañero, además de crear y gestionar la rama para el archivo Changelog. Lo que más aprendí en este proceso fue cómo autenticarme y utilizar la herramienta GitHub CLI (gh) directamente desde la terminal, y la importancia de revisar el código paso a paso antes de fusionarlo. Me di cuenta de que el modelo GitFlow ayuda mucho a mantener el orden cuando trabajamos en equipo, ya que nos permite integrar cambios de forma segura sin afectar el trabajo del otro.
+
 **Declaración de IA:** 
 Para este encargo utilicé IA (Gemini) asumiendo un rol de tutor técnico. Se utilizó para guiar la ejecución de comandos en PowerShell, explicar la lógica detrás de cada paso de GitFlow y estructurar las convenciones de este documento de forma ordenada.
+
+**Declaración de uso de IA (Matías Reyes):**
+Para mi parte del trabajo, utilicé IA (Gemini) como apoyo técnico únicamente para guiarme con la ejecución de comandos de configuración, gestión de Pull Requests y creación de ramas en la terminal, acatando la norma de no usarla para generar esta reflexión.
