@@ -57,7 +57,7 @@ docker compose up --build
 # http://localhost:8080
 ```
 
-## Cómo ejecutar las pruebas
+## Cómo ejecutar las pruebas.
 
 ```bash
 mvn test      # unit tests + Cucumber
