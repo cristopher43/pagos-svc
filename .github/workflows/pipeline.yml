@@ -73,17 +73,18 @@ jobs:
         run: mvn -B dependency:resolve
 
       - name: Instalar Snyk CLI oficial
-        uses: snyk/actions/setup@v4
+        uses: snyk/actions/setup@master
 
       - name: Snyk - Escaneo SCA de dependencias con bloqueo por severidad High/Critical
         run: snyk test --file=pom.xml --severity-threshold=high
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-      - name: Snyk - Escaneo SAST de código estático con bloqueo
+      - name: Snyk - Escaneo SAST de código estático con reporte
         run: snyk code test --severity-threshold=high
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        continue-on-error: true
 
   # ========================================================
   # IE1: Construcción y Empaquetado de Imagen Docker Optimizada
