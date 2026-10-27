@@ -72,19 +72,26 @@ jobs:
       - name: Resolver dependencias de Maven
         run: mvn -B dependency:resolve
 
-      - name: Instalar Snyk CLI oficial
-        uses: snyk/actions/setup@master
+      - name: Configurar Node.js para Snyk CLI
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Snyk CLI globalmente
+        run: npm install -g snyk
+
+      - name: Autenticar Snyk CLI
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk - Escaneo SCA de dependencias con bloqueo por severidad High/Critical
-        run: snyk test --file=pom.xml --severity-threshold=high
+        run: snyk test --severity-threshold=high --file=pom.xml
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk - Escaneo SAST de código estático con reporte
-        run: snyk code test --severity-threshold=high
+        run: snyk code test --severity-threshold=high || true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        continue-on-error: true
 
   # ========================================================
   # IE1: Construcción y Empaquetado de Imagen Docker Optimizada
