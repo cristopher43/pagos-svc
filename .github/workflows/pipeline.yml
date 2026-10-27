@@ -81,17 +81,21 @@ jobs:
         run: npm install -g snyk
 
       - name: Autenticar Snyk CLI
-        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+        run: |
+          CLEAN_TOKEN=$(echo -n "${{ secrets.SNYK_TOKEN }}" | tr -d '\r\n\t ')
+          snyk auth "$CLEAN_TOKEN"
 
       - name: Snyk - Escaneo SCA de dependencias con bloqueo por severidad High/Critical
-        run: snyk test --severity-threshold=high --file=pom.xml -d
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          CLEAN_TOKEN=$(echo -n "${{ secrets.SNYK_TOKEN }}" | tr -d '\r\n\t ')
+          export SNYK_TOKEN="$CLEAN_TOKEN"
+          snyk test --severity-threshold=high --file=pom.xml
 
       - name: Snyk - Escaneo SAST de código estático con reporte
-        run: snyk code test --severity-threshold=high || true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          CLEAN_TOKEN=$(echo -n "${{ secrets.SNYK_TOKEN }}" | tr -d '\r\n\t ')
+          export SNYK_TOKEN="$CLEAN_TOKEN"
+          snyk code test --severity-threshold=high || true
 
   # ========================================================
   # IE1: Construcción y Empaquetado de Imagen Docker Optimizada
