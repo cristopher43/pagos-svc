@@ -69,8 +69,8 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
-      - name: Resolver dependencias de Maven
-        run: mvn -B dependency:resolve
+      - name: Compilar proyecto Maven para generar árbol de dependencias
+        run: mvn -B test-compile -DskipTests
 
       - name: Configurar Node.js para Snyk CLI
         uses: actions/setup-node@v4
@@ -84,7 +84,7 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk - Escaneo SCA de dependencias con bloqueo por severidad High/Critical
-        run: snyk test --severity-threshold=high --file=pom.xml
+        run: snyk test --severity-threshold=high --file=pom.xml -d
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
