@@ -52,13 +52,15 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js para Snyk CLI
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Instalar Snyk CLI
-        run: npm install -g snyk
+      - name: Validar presencia de SNYK_TOKEN
+        run: |
+          if [ -z "${{ secrets.SNYK_TOKEN }}" ]; then
+            echo "::error title=Falta SNYK_TOKEN::El secreto SNYK_TOKEN no está configurado en GitHub."
+            echo "Ve a Settings -> Secrets and variables -> Actions y agrégalo con tu token de snyk.io."
+            exit 1
+          else
+            echo "SNYK_TOKEN detectado correctamente."
+          fi
 
       - name: Configurar JDK 21 (Temurin)
         uses: actions/setup-java@v4
@@ -67,8 +69,14 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
+      - name: Resolver dependencias de Maven
+        run: mvn -B dependency:resolve
+
+      - name: Instalar Snyk CLI oficial
+        uses: snyk/actions/setup@v4
+
       - name: Snyk - Escaneo SCA de dependencias con bloqueo por severidad High/Critical
-        run: snyk test --severity-threshold=high
+        run: snyk test --file=pom.xml --severity-threshold=high
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
