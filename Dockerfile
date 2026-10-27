@@ -17,7 +17,7 @@ RUN mvn -B -q clean package -DskipTests
 # Etapa 2: Entorno de Ejecución (Runtime Stage)
 # Optimizado con Alpine Linux y usuario sin privilegios root
 # ========================================================
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 
 WORKDIR /app
 
