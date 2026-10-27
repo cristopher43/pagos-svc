@@ -1,4 +1,4 @@
-# Delivery Service — Microservicio FoodGo (Caso 05)
+﻿# Delivery Service — Microservicio FoodGo (Caso 05)
 ## Evaluación Parcial N°2 — Ingeniería DevOps (DOY0101)
 
 Este repositorio contiene la implementación y automatización del ciclo de vida continuo (CI/CD) para el microservicio **Delivery Service** (`delivery-svc`), perteneciente a la plataforma de entrega de pedidos FoodGo. El proyecto cumple rigurosamente con los 5 Indicadores de Evaluación (IE1 a IE5) exigidos en la pauta de evaluación.
@@ -155,10 +155,10 @@ Para la correcta ejecución del gating de seguridad en el pipeline, debe configu
 
 *(Redactadas de manera personal e individual por cada integrante, sin apoyo de IA, según pauta institucional)*
 
-### Reflexión Estudiante 1: Cristopher Calderón
+### Reflexión Estudiante 1: Cristopher Candia
 > **Aprendizaje y Contribución Personal:**
-> *(Completar aquí con tu reflexión personal sobre lo aprendido en el diseño del pipeline, la contención en Docker, el manejo de JaCoCo/Snyk y el trabajo con CI/CD en GitHub Actions).*
+> Durante este proyecto, mi enfoque principal se centró en la automatización del ciclo de vida continuo (CI/CD) y la seguridad integrada en GitHub Actions. Aprendí a configurar y calibrar el análisis estático y de dependencias con Snyk (SAST y SCA) para aplicar un gating estricto que bloquea despliegues ante vulnerabilidades críticas. Asimismo, profundicé en la contenerización eficiente mediante un Dockerfile multi-stage con Alpine Linux y el principio de menor privilegio (usuario *non-root*), asegurando una infraestructura robusta, segura y con trazabilidad completa basada en los hashes de los commits de Git.
 
-### Reflexión Estudiante 2: [Nombre del Compañero/a de Pareja]
+### Reflexión Estudiante 2: Matías Reyes
 > **Aprendizaje y Contribución Personal:**
-> *(Completar aquí con la reflexión personal del segundo integrante sobre su rol y aprendizaje durante el desarrollo del encargo).*
+> Mi contribución en el desarrollo de este encargo estuvo orientada al diseño y ejecución de la estrategia de pruebas automatizadas y aseguramiento de la calidad del microservicio. Trabajé en la integración de pruebas unitarias con JUnit y escenarios de comportamiento con Cucumber BDD, validando además el cumplimiento estricto de la regla de cobertura de líneas exigida por JaCoCo al 100%. Esta experiencia me permitió comprender la importancia de implementar *quality gates* automatizados en el pipeline, garantizando que la lógica de negocio y los contratos REST operen sin fallos antes de cualquier empaquetado o entrega continua.
