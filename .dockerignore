@@ -1,5 +1,9 @@
 target/
 *.class
+.git/
+.github/
+docs/
+*.md
 .idea/
 .vscode/
 *.iml
