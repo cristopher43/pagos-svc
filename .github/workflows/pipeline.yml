@@ -156,7 +156,7 @@ jobs:
         run: echo "deploy_start=$(date +%s)" >> "$GITHUB_OUTPUT"
 
       - name: Instalar y Configurar Entorno Orquestado Kubernetes (Kind)
-        uses: helm/kind-action@v1.10.0
+        uses: helm/kind-action@v1.15.2
         with:
           cluster_name: devops-ep3-cluster
 
