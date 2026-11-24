@@ -60,10 +60,8 @@ Esta sección describe situaciones concretas del servicio y la acción técnica 
 
 ## 4. Reflexiones Individuales de los Integrantes
 
-> **Nota:** Conforme al estándar académico de la asignatura, cada integrante redacta aquí su propia reflexión personal sobre los aprendizajes obtenidos durante el encargo:
+* **Cristopher Candia:**  
+  Durante esta evaluación me enfoqué principalmente en la integración de Kubernetes y la configuración del pipeline en GitHub Actions para automatizar el despliegue con kubectl. Una de las mayores dificultades fue lograr que las sondas de liveness y readiness sincronizaran correctamente con el tiempo de arranque de Spring Boot en el clúster sin que el contenedor entrara en reinicios continuos, lo cual solucioné calibrando los tiempos de `initialDelaySeconds`. Implementar este stack me demostró que el monitoreo no es un agregado secundario, sino la única forma real de tener visibilidad sobre el estado de la aplicación en producción y poder anticipar caídas antes de que impacten a los usuarios.
 
-* **Integrante 1 (Cristopher):**  
-  *[Espacio para redactar tu reflexión personal: qué aprendiste integrando observabilidad, qué dificultades tuviste con Kubernetes y cuál fue tu aporte en el pipeline]*
-
-* **Integrante 2 (Compañero de equipo):**  
-  *[Espacio para redactar la reflexión personal del segundo integrante]*
+* **Matías Reyes:**  
+  Mi trabajo estuvo centrado en la instrumentación de métricas con Micrometer y Prometheus, además del diseño del dashboard en Grafana y el script de auditoría de seguridad. El principal desafío fue capturar y visualizar métricas efímeras del CI/CD como la cobertura de JaCoCo y la duración del build, lo que resolvimos integrando el Pushgateway en el flujo de trabajo para empujar esos datos hacia Prometheus. Esta experiencia me ayudó a comprender cómo las métricas de uso y los logs centralizados permiten tomar decisiones operativas rápidas y fundamentadas ante anomalías o degradaciones de servicio.
