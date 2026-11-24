@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delivery-svc
+  namespace: devops-ep3
+  labels:
+    app: delivery-svc
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: delivery-svc
+  template:
+    metadata:
+      labels:
+        app: delivery-svc
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8080"
+    spec:
+      containers:
+        - name: delivery-svc
+          image: duoc/delivery-svc:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: delivery-svc
+  namespace: devops-ep3
+  labels:
+    app: delivery-svc
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+  selector:
+    app: delivery-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: delivery-svc-nodeport
+  namespace: devops-ep3
+  labels:
+    app: delivery-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080
+      name: http
+  selector:
+    app: delivery-svc
