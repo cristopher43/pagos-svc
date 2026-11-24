@@ -22,7 +22,7 @@ FORBIDDEN_PATTERNS=(
 )
 
 for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
-  MATCHES=$(grep -rEn --exclude-dir={.git,target,.idea,node_modules,docs} "$pattern" . || true)
+  MATCHES=$(grep -rEn --exclude-dir={.git,target,.idea,node_modules,docs} -e "$pattern" . || true)
   if [ -n "$MATCHES" ]; then
     echo "::error title=Falla Crítica de Seguridad::Se detectaron posibles secretos hardcodeados con el patrón '$pattern':"
     echo "$MATCHES"
