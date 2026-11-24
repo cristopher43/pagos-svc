@@ -46,21 +46,6 @@ pagos-svc/
 └── README.md
 ```
 
----
-
-## 📊 Matriz de Cumplimiento de la Rúbrica (100%)
-
-| Indicador de Evaluación | % Ponderación | Estado | Evidencia en el Repositorio |
-| :--- | :---: | :---: | :--- |
-| **IE1: Herramientas de Monitoreo** | **20%** | **CUMPLIDO (100%)** | Endpoints `/actuator/prometheus` y `/actuator/health` expuestos; configuración Prometheus (`monitoring/prometheus.yml`) y Loki/Promtail para logs. |
-| **IE2: Kubernetes en la Nube** | **20%** | **CUMPLIDO (100%)** | Manifiestos en `k8s/` (`00-namespace.yaml`, `01-app.yaml`, `02-monitoring.yaml`) aplicados automáticamente desde el pipeline CI/CD. |
-| **IE3: Dashboard con 4 Métricas** | **10%** | **CUMPLIDO (100%)** | Dashboard JSON versionado en `monitoring/dashboards/` con: (1) Tiempo de deploy, (2) Cobertura JaCoCo, (3) CPU/RAM, (4) Errores 5xx/4xx y disponibilidad. |
-| **IE4: Documentar Decisiones** | **10%** | **CUMPLIDO (100%)** | [docs/decisiones-tecnicas.md](docs/decisiones-tecnicas.md) con diagrama Mermaid, justificación de herramientas y matriz *Panel $\rightarrow$ Decisión $\rightarrow$ Acción*. |
-| **IE5: Políticas de Cumplimiento** | **20%** | **CUMPLIDO (100%)** | [audit/compliance-policy.md](audit/compliance-policy.md), script de auditoría [audit/check-secrets.sh](audit/check-secrets.sh), escaneo Snyk y branch protection en `main`. |
-| **IE6: Freno Automático** | **20%** | **CUMPLIDO (100%)** | Gates secuenciales en `.github/workflows/pipeline.yml` que interrumpen el flujo y omiten el deploy ante secretos o cobertura menor al 100%. Ver [docs/evidencias-freno.md](docs/evidencias-freno.md). |
-
----
-
 ## 🚀 Cómo Ejecutar el Entorno en Local
 
 Para probar todo el entorno de aplicación y observabilidad en una sola máquina:
