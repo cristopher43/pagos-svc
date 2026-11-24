@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: devops-ep3
+  labels:
+    app.kubernetes.io/part-of: foodgo-platform
+    environment: simulated-production
